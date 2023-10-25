@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import pageObjects.LoginPage;
 
 public class TC_DDT_Login extends Base_Class {
-    @Test(dataProvider = "LoginData")
+    @Test(dataProvider = "LoginData" )
     public void ddtLogin(String[] loginData){
         String user=loginData[0];
         String pass=loginData[1];

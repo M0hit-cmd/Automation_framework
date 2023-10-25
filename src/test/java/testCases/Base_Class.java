@@ -8,9 +8,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageObjects.LoginPage;
+import utils.Grid;
 import utils.ReadConfig;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -28,16 +30,19 @@ public class Base_Class {
 
     @BeforeClass
     @Parameters({"browserName"})
-    public void setup(String browserName) {
+    public void setup(String browserName) throws MalformedURLException {
         logger= Logger.getLogger("ebanking");
-        if (browserName.equalsIgnoreCase("chrome"))
-            driver = new ChromeDriver();
-        else if (browserName.equalsIgnoreCase("firefox"))
-            driver = new FirefoxDriver();
-        else if (browserName.equalsIgnoreCase("edge"))
-            driver = new EdgeDriver();
-        else
-            Assert.fail();
+
+
+        driver = Grid.initializeBrowser(browserName);
+//        if (browserName.equalsIgnoreCase("chrome"))
+//            driver = new ChromeDriver();
+//        else if (browserName.equalsIgnoreCase("firefox"))
+//            driver = new FirefoxDriver();
+//        else if (browserName.equalsIgnoreCase("edge"))
+//            driver = new EdgeDriver();
+//        else
+//            Assert.fail();
         driver.manage().window().maximize();
         driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

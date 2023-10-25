@@ -7,9 +7,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObjects.AddNewCustomer;
+import pageObjects.Customer_Register_Success;
 import pageObjects.LoginPage;
 import pageObjects.ManagerHome;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 public class TC_AddMultiple_Customer extends Base_Class {
@@ -29,7 +31,7 @@ public class TC_AddMultiple_Customer extends Base_Class {
     }
 
     @Test(dataProvider = "customer_data")
-    public void test_multi_cust(String[] objects) throws InterruptedException, ParseException {
+    public void test_multi_cust(String[] objects) throws InterruptedException, ParseException, IOException {
         customer = new AddNewCustomer(driver);
         customer.fill_customer(objects);
         Thread.sleep(5000);
@@ -37,6 +39,8 @@ public class TC_AddMultiple_Customer extends Base_Class {
         Thread.sleep(5000);
         if (driver.getPageSource().contains("Customer Registered Successfully")) {
             Assert.assertTrue(true);
+            Customer_Register_Success csr=new Customer_Register_Success(driver);
+            csr.store();
         } else {
             Assert.fail();
         }
@@ -53,7 +57,10 @@ public class TC_AddMultiple_Customer extends Base_Class {
 
     @AfterMethod
     public void afterMethod() throws InterruptedException {
+
         managerHome.click_Log_out();
+        driver.switchTo().alert().accept();
+        driver.switchTo().defaultContent();
     }
 
 }

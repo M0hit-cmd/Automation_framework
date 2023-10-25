@@ -20,11 +20,10 @@ public class Customer_Register_Success {
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }
-    public void store(int count) throws IOException {
+    public void store() throws IOException {
         Properties prop=new Properties();
         prop.load(new FileInputStream("C:\\Users\\Mohit Gupta\\Documents\\12 Oct\\Framework_project\\src\\test\\java\\utils\\customerdetails.properties"));
         String key=customer_name.getText()+customer_city.getText();
-        count++;
         OutputStream out=new FileOutputStream("C:\\Users\\Mohit Gupta\\Documents\\12 Oct\\Framework_project\\src\\test\\java\\utils\\customerdetails.properties");
         prop.setProperty(key,customer_id.getText());
         prop.store(out,"Customer added");

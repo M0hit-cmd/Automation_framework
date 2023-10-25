@@ -57,7 +57,7 @@ public class TC_LoginTest001 extends Base_Class {
         Thread.sleep(5000);
         customer.setSubmit();
         Customer_Register_Success c1=new Customer_Register_Success(driver);
-        c1.store(count);
+        c1.store();
         Thread.sleep(6000);
     }
     @DataProvider(name="customer_data")

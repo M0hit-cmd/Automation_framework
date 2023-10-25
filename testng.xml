@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" >
+<suite name="All Test Suite"  parallel="tests" thread-count="2">
 
     <test preserve-order="true" name="testing">
         <parameter name="browserName" value="chrome"/>
@@ -9,5 +9,12 @@
             </class>
         </classes>
     </test>
+<!--    <test preserve-order="true" name="testing2">-->
+<!--        <parameter name="browserName" value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="testCases.TC_AddMultiple_Customer">-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>
