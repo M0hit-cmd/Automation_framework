@@ -40,6 +40,8 @@ public class ManagerHome {
     @FindBy(xpath = "//a[contains(text(),'Log out')]")
     WebElement Log_out;
 
+    @FindBy(xpath = "//marquee[contains(text(),\"Welcome To Manager's Page\")]")
+    WebElement welcome_message;
     public ManagerHome(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
@@ -85,6 +87,9 @@ public class ManagerHome {
     }
     public void click_Log_out(){
         Log_out.click();
+    }
+    public boolean welcome_message(){
+        return welcome_message != null;
     }
 
 

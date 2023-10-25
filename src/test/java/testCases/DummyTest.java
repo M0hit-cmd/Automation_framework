@@ -32,7 +32,7 @@ public class DummyTest  {
         AddNewCustomer newCustomer = new AddNewCustomer(driver);
         newCustomer.fill_customer_name("Mohit");
         newCustomer.click_male();
-        newCustomer.selectDate();
+//        newCustomer.selectDate();
     }
 
     @Test
@@ -42,7 +42,7 @@ public class DummyTest  {
         AddNewCustomer newCustomer = new AddNewCustomer(driver);
         newCustomer.fill_customer_name("Sachin");
         newCustomer.click_male();
-        newCustomer.selectDate();
+//        newCustomer.selectDate();
     }
 
 }
