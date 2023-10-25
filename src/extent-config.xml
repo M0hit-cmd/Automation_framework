@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE extent-config PUBLIC "-//ExtentReports//DTD Extent Configuration File 1.0//EN" "https://www.extentreports.com/extent-config.dtd">
+<extent-config>
+    <report-name>Extent Report</report-name>
+    <output-folder>./reports</output-folder>
+    <document-title>Extent Report</document-title>
+    <timestamp-format>yyyy-MM-dd HH:mm:ss</timestamp-format>
+    <theme>standard</theme>
+    <log-level>INFO</log-level>
+    <screen-capture>false</screen-capture>
+    <browser-under-test></browser-under-test>
+    <platform></platform>
+    <test-start-timestamp>2023-10-25 10:15:49 PST</test-start-timestamp>
+    <test-end-timestamp></test-end-timestamp>
+</extent-config>

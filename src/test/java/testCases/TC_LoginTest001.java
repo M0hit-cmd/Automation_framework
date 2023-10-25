@@ -5,18 +5,19 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.AddNewCustomer;
+import pageObjects.Customer_Register_Success;
 import pageObjects.LoginPage;
 import pageObjects.ManagerHome;
 import utils.FillNewCustomer;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.logging.Logger;
 
 public class TC_LoginTest001 extends Base_Class {
-
-    @Test
+    @Test(priority = 0)
     public void loginTest() throws InterruptedException, MalformedURLException, ParseException {
 
         logger.info("URl is opened");
@@ -38,24 +39,34 @@ public class TC_LoginTest001 extends Base_Class {
             Assert.fail();
             logger.info("Login test failed");
         }
-        AddNewCustomer newCustomer = new AddNewCustomer(driver);
-//        fill_customer(newCustomer,)
 
         Thread.sleep(3000);
     }
-    @Test
+    @Test(priority = 2)
     public void managerHomeTest(){
         ManagerHome managerHome=new ManagerHome(driver);
         Assert.assertTrue(managerHome.welcome_message());
+        managerHome.click_New_Customer();
+    }
+    @Test(dataProvider = "customer_data" ,priority=3)
+    public void add_customer(Object[] objects) throws ParseException, InterruptedException, IOException {
+
+        AddNewCustomer customer=new AddNewCustomer(driver);
+        customer.
+        fill_customer(customer,objects);
+        Thread.sleep(5000);
+        customer.setSubmit();
+        Customer_Register_Success c1=new Customer_Register_Success(driver);
+        c1.store(count);
+        Thread.sleep(6000);
+    }
+    @DataProvider(name="customer_data")
+    public Object[] customer_data_provider(){
+        Object[][]obj=new Object[][]{{"Rohit Sharma","Male","07022000","Address of Rohit","Mumbai","Maharashtra","100902","9894820999","rohit_sharma_030934@gmail.com","ABC@121004"},{"Radha","Female","01012001","Address of Radha","New Delhi","Delhi","121005","8989838582","radha_rahul_0493@gmail.com","ABC@121004"}};
+        return new Object[][]{{"Mohit","Male","06101999","Address of Mohit","Faridabad","Haryana","121004","8888688888","mohit_singh099122342@gmail.com","ABC@121004"}};
+
     }
 
-
-    private void fill_customer(AddNewCustomer newCustomer,Object[][] objects) throws ParseException {
-
-        newCustomer.fill_customer_name("Mohit");
-        newCustomer.click_male();
-        newCustomer.selectDate("01022007");
-    }
 
 
 }

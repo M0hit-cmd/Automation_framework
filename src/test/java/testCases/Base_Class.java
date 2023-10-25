@@ -22,6 +22,7 @@ public class Base_Class {
     public String password = readConfig.getPassword();
     public static WebDriver driver;
     public static Logger logger;
+    public static int count=1;
     @BeforeClass
     @Parameters({"browserName"})
     public void setup(String browserName) {
@@ -42,6 +43,6 @@ public class Base_Class {
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 }
