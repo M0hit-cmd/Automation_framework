@@ -44,6 +44,8 @@ public class AddNewCustomer {
     @FindBy(xpath = "//input[@type='reset']")
     WebElement reset;
 
+    @FindBy(xpath = "//a[contains(text(),'Home')]")
+    WebElement home;
     public  AddNewCustomer(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
@@ -99,21 +101,36 @@ public class AddNewCustomer {
     {
         submit.click();
     }
+    public void clickHome()
+    {
+        home.click();
+    }
 
-    public void fill_customer(AddNewCustomer customer, Object[] objects) throws ParseException {
-        customer.fill_customer_name(objects[0].toString());
-        if(objects[1].toString().equals("Male"))
-            customer.click_male();
+    public void fill_customer( String[] str) throws ParseException {
+        fill_customer_name(str[0]);
+        if(str[1].equals("Male"))
+            click_male();
         else
-            customer.click_female();
-        customer.selectDate(objects[2].toString());
-        customer.setAddress(objects[3].toString());
-        customer.setCity(objects[4].toString());
-        customer.setState(objects[5].toString());
-        customer.setPin(objects[6].toString());
-        customer.setMobile(objects[7].toString());
-        customer.setEmail(objects[8].toString());
-        customer.setPass(objects[9].toString());
+            click_female();
+        selectDate(str[2]);
+        setAddress(str[3]);
+        setCity(str[4]);
+        setState(str[5]);
+        setPin(str[6]);
+        setMobile(str[7]);
+        setEmail(str[8]);
+        setPass(str[9]);
 
+    }
+    public void cleanUpCustomer(){
+        customer_Name.clear();
+        date_ele.clear();
+        address.clear();
+        city.clear();
+        state.clear();
+        pin.clear();
+        phone_no.clear();
+        email.clear();
+        pass.clear();
     }
 }

@@ -5,7 +5,7 @@
     <test preserve-order="true" name="testing">
         <parameter name="browserName" value="chrome"/>
         <classes>
-            <class name="testCases.TC_LoginTest001">
+            <class name="testCases.TC_AddMultiple_Customer">
             </class>
         </classes>
     </test>

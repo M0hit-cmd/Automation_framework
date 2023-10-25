@@ -12,6 +12,7 @@ import utils.ReadConfig;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 
@@ -23,6 +24,8 @@ public class Base_Class {
     public static WebDriver driver;
     public static Logger logger;
     public static int count=1;
+
+
     @BeforeClass
     @Parameters({"browserName"})
     public void setup(String browserName) {
@@ -35,7 +38,7 @@ public class Base_Class {
             driver = new EdgeDriver();
         else
             Assert.fail();
-
+        driver.manage().window().maximize();
         driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -43,6 +46,6 @@ public class Base_Class {
 
     @AfterClass
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
     }
 }
