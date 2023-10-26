@@ -44,6 +44,7 @@ public class TC_LoginTest001 extends Base_Class {
 
     @Test(priority = 2)
     public void managerHomeTest(){
+
         ManagerHome managerHome=new ManagerHome(driver);
         Assert.assertTrue(managerHome.welcome_message());
         managerHome.click_New_Customer();
