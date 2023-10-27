@@ -61,9 +61,9 @@ public class SuitListeners implements ITestListener, IAnnotationTransformer {
     }
 
 
-    @Override
-    public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
-        annotation.setRetryAnalyzer(RetryAnalyzer.class);
-    }
+//    @Override
+//    public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+//        annotation.setRetryAnalyzer(RetryAnalyzer.class);
+//    }
 }
 
