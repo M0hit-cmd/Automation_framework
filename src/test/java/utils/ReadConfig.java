@@ -27,5 +27,8 @@ public class ReadConfig {
     public String getPassword(){
         return prop.getProperty("password");
     }
+    public String getCust_id() {
+        return prop.getProperty("customer_id");
+    }
 
 }

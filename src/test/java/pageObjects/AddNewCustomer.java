@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.IDataProviderAnnotation;
+import utils.ReadConfig;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -107,6 +108,7 @@ public class AddNewCustomer {
     }
 
     public void fill_customer( String[] str) throws ParseException {
+        System.out.println(str);
         fill_customer_name(str[0]);
         if(str[1].equals("Male"))
             click_male();
@@ -133,4 +135,5 @@ public class AddNewCustomer {
         email.clear();
         pass.clear();
     }
+
 }

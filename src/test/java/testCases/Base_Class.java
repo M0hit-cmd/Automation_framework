@@ -25,6 +25,7 @@ public class Base_Class {
     public String password = readConfig.getPassword();
     public static WebDriver driver;
     public static Logger logger;
+    public String cust_id= readConfig.getCust_id();
     public static int count=1;
 
 

@@ -26,6 +26,7 @@ public class Customer_Register_Success {
         String key=customer_name.getText()+customer_city.getText();
         OutputStream out=new FileOutputStream("C:\\Users\\Mohit Gupta\\Documents\\12 Oct\\Framework_project\\src\\test\\java\\utils\\customerdetails.properties");
         prop.setProperty(key,customer_id.getText());
+        prop.setProperty("cust_id",customer_id.getText());
         prop.store(out,"Customer added");
     }
 }

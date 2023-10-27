@@ -43,6 +43,7 @@ public class TC_AddMultiple_Customer extends Base_Class {
             Customer_Register_Success csr=new Customer_Register_Success(driver);
             csr.store();
         } else {
+            logger.warning("Customer already exists");
             Assert.fail();
         }
     }
