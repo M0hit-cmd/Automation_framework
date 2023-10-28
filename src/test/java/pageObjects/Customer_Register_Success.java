@@ -16,9 +16,20 @@ public class Customer_Register_Success {
     WebElement customer_name;
     @FindBy(xpath = "//tr/td[contains(text(),'City')]/following-sibling::td")
     WebElement customer_city;
+
+    @FindBy(xpath = "//a[contains(text(),'Continue')]")
+    WebElement continueBtn;
+    @FindBy(xpath = "//a[contains(text(),'Home')]")
+    WebElement home_btn;
     public Customer_Register_Success(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
+    }
+    public void click_Home(){
+        home_btn.click();
+    }
+    public void click_continue(){
+        continueBtn.click();
     }
     public void store() throws IOException {
         Properties prop=new Properties();

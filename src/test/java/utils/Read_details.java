@@ -29,4 +29,10 @@ public class Read_details {
     public String getCust_id() {
         return prop.getProperty("cust_id");
     }
+    public String getAccount_no(){return prop.getProperty("account_id");}
+    public String initial_ammount(){return prop.getProperty("intial_amount");}
+    public String deposit_amount(){return prop.getProperty("deposit_amount");}
+    public void cleanUpProp(){
+        prop.clear();
+    }
 }

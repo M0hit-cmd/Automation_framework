@@ -1,6 +1,7 @@
 package testCases;
 
 import net.bytebuddy.implementation.FieldAccessor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -10,6 +11,7 @@ import org.testng.annotations.*;
 import pageObjects.LoginPage;
 import utils.Grid;
 import utils.ReadConfig;
+import utils.Read_details;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -27,31 +29,34 @@ public class Base_Class {
     public static Logger logger;
     public String cust_id= readConfig.getCust_id();
     public static int count=1;
-
-
-    @BeforeClass
+    public static String browser_name;
+    @BeforeTest
     @Parameters({"browserName"})
     public void setup(String browserName) throws MalformedURLException {
+        browser_name=browserName;
         logger= Logger.getLogger("ebanking");
-
-
         driver = Grid.initializeBrowser(browserName);
-//        if (browserName.equalsIgnoreCase("chrome"))
-//            driver = new ChromeDriver();
-//        else if (browserName.equalsIgnoreCase("firefox"))
-//            driver = new FirefoxDriver();
-//        else if (browserName.equalsIgnoreCase("edge"))
-//            driver = new EdgeDriver();
-//        else
-//            Assert.fail();
         driver.manage().window().maximize();
         driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     }
 
-    @AfterClass
+    @AfterTest
     public void tearDown() {
+
         driver.quit();
+        Read_details rd=new Read_details();
+        rd.cleanUpProp();
+    }
+    public boolean isAlertPresent(){
+        try{
+            driver.switchTo().alert();
+            return true;
+        }
+        catch (NoAlertPresentException exp)
+        {
+            return false;
+        }
     }
 }

@@ -30,5 +30,6 @@ public class ReadConfig {
     public String getCust_id() {
         return prop.getProperty("customer_id");
     }
+    public String getAccount_id(){return prop.getProperty("account_id");}
 
 }

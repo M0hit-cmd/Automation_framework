@@ -1,6 +1,7 @@
 package testCases;
 
 import net.bytebuddy.utility.RandomString;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,8 +12,10 @@ import pageObjects.Customer_Register_Success;
 import pageObjects.LoginPage;
 import pageObjects.ManagerHome;
 import resources.StaticDataProvider;
+import utils.Grid;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.text.ParseException;
 
 public class TC_AddMultiple_Customer extends Base_Class {
@@ -21,7 +24,7 @@ public class TC_AddMultiple_Customer extends Base_Class {
     AddNewCustomer customer;
 
     @BeforeMethod
-    public void bfrMethod_multi_cust() {
+    public void bfrMethod_multi_cust() throws MalformedURLException {
         lp = new LoginPage(driver);
         lp.setUserName(userName);
         lp.setPassword(password);
@@ -34,7 +37,7 @@ public class TC_AddMultiple_Customer extends Base_Class {
     @Test(dataProvider = "customer_data",dataProviderClass = StaticDataProvider.class)
     public void test_multi_cust(String[] objects) throws InterruptedException, ParseException, IOException {
         customer = new AddNewCustomer(driver);
-        customer.fill_customer(objects);
+        customer.fill_customer(objects,browser_name);
         Thread.sleep(5000);
         customer.setSubmit();
         Thread.sleep(5000);
@@ -53,10 +56,13 @@ public class TC_AddMultiple_Customer extends Base_Class {
 
     @AfterMethod
     public void afterMethod() throws InterruptedException {
-
         managerHome.click_Log_out();
-        driver.switchTo().alert().accept();
-        driver.switchTo().defaultContent();
+        Thread.sleep(2000);
+        if(isAlertPresent()) {
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+            logger.info("logout sucessfully");
+        }
     }
 
 }

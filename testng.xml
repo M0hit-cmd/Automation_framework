@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" >
-
-    <test preserve-order="true" name="testing">
-        <parameter name="browserName" value="chrome"/>
-        <classes>
-            <class name="testCases.TC_AddCustomer_Test">
-            </class>
-        </classes>
-    </test>
-
-<!--    <test preserve-order="true" name="testing2">-->
-<!--        <parameter name="browserName" value="firefox"/>-->
+<suite name="All Test Suite" parallel="tests" thread-count="2">
+<!--    <test preserve-order="true" name="testing">-->
+<!--        <parameter name="browserName" value="chrome"/>-->
 <!--        <classes>-->
-<!--            <class name="testCases.TC_DDT_Login">-->
-<!--            </class>-->
+<!--            <class name="testCases.TC_LoginTest001"/>-->
+<!--            <class name="testCases.TC_AddCustomer_Test"/>-->
+<!--&lt;!&ndash;            <class name="testCases.TC_DeleteCustomer"/>&ndash;&gt;-->
+<!--            <class name="testCases.TC_AddAccount"/>-->
+<!--            <class name="testCases.DepositTest"/>-->
+<!--            &lt;!&ndash;            <class name="testCases.TC_Balance_Enquiry"/>&ndash;&gt;-->
 <!--        </classes>-->
 <!--    </test>-->
+    <test name="MultipleCustomerTest">
+        <parameter name="browserName" value="firefox"/>
+        <classes>
+            <class name="testCases.TC_AddMultiple_Customer"/>
+        </classes>
+    </test>
 
 </suite>

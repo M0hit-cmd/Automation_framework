@@ -20,8 +20,9 @@ public class TC_DDT_Login extends Base_Class {
         if(isAlertPresent()){
             driver.switchTo().alert().accept();
             driver.switchTo().defaultContent();
-            Assert.fail();
             logger.warning("Login failed");
+            Assert.fail();
+
         }
         else{
             Assert.assertTrue(true);
@@ -32,16 +33,7 @@ public class TC_DDT_Login extends Base_Class {
         }
 
     }
-    public boolean isAlertPresent(){
-        try{
-            driver.switchTo().alert();
-            return true;
-        }
-        catch (NoAlertPresentException exp)
-        {
-            return false;
-        }
-    }
+
     @DataProvider(name="LoginData")
     String[][] LoginData(){
         return new String[][]{{"mngr534116","hUmYqyv"},{"mngr432432","hksjdhkj"}};

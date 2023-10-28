@@ -16,35 +16,35 @@ import java.text.ParseException;
 public class TC_AddCustomer_Test extends Base_Class {
     @Test(dataProvider = "default_customer_data",dataProviderClass = StaticDataProvider.class)
     public void addNewCustomer(String[] str) throws InterruptedException, ParseException, IOException {
-        LoginPage lp=new LoginPage(driver);
-        lp.setUserName(userName);
-        lp.setPassword(password);
-        lp.login();
+
         ManagerHome managerHome=new ManagerHome(driver);
         Assert.assertTrue(managerHome.welcome_message());
         managerHome.click_New_Customer();
         AddNewCustomer customer=new AddNewCustomer(driver);
-        customer.fill_customer(str);
-        Thread.sleep(5000);
+        customer.fill_customer(str,browser_name);
+        logger.info("Added Customer Details");
+        Thread.sleep(3000);
         customer.setSubmit();
-        Thread.sleep(5000);
+        if(isAlertPresent())
+        {
+            Thread.sleep(10000);
+            logger.info("Unable to add new customer");
+            Assert.fail();
+        }
        if (driver.getPageSource().contains("Customer Registered Successfully"))
        {
+           Thread.sleep(2000);
+           logger.info("New Customer Created");
            Assert.assertTrue(true);
            Customer_Register_Success csr=new Customer_Register_Success(driver);
            csr.store();
+           csr.click_Home();
        }
        else
        {
+           logger.info("Unable to create new customer");
            Assert.fail();
        }
-    }
-    @DataProvider(name="customer_data")
-    public String[][] customer_data_provider(){
-        return new String[][]{{"Mohit","Male","06101998","Address of Mohit","Faridabad","Haryana","121004","8888688888",randomestring()+"@gmail.com","ABC@121004"},{"Rohit Sharma","Male","07022000","Address of Rohit","Mumbai","Maharashtra","100902","9894820999",randomestring()+"@gmail.com","ABC@121004"},{"Radha","Female","01012001","Address of Radha","New Delhi","Delhi","121005","8989838582",randomestring()+"@gmail.com","ABC@121004"}};
-    }
-    public String randomestring(){
-        return RandomString.make(8);
     }
 
 }

@@ -52,5 +52,13 @@ public class AddNewAccount {
     public void setReset_btn() {
         reset_btn.click();
     }
+    public void fillDefault(String customer,String amount,String account_type)
+    {
+        fill_cust_id(customer);
+        fill_account_type(account_type);
+        fill_amount(amount);
+        setSubmit_btn();
+
+    }
 
 }
